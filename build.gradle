@@ -1,0 +1,36 @@
+plugins {
+    id "com.google.protobuf" version "0.8.10"
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+def PROTO_VERSION = "3.6.1"
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    // https://mvnrepository.com/artifact/com.google.protobuf/protobuf-java
+    compile group: 'com.google.protobuf', name: 'protobuf-java', version: PROTO_VERSION
+    compile group: 'com.google.protobuf', name: 'protobuf-java-util', version: PROTO_VERSION
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir('build/generated/source/proto/main/java')
+        }
+    }
+}
+
+protobuf {
+    protoc {
+        artifact = "com.google.protobuf:protoc:" + PROTO_VERSION
+    }
+}

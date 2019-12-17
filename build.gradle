@@ -6,13 +6,13 @@ plugins {
 group 'org.example'
 version '1.0-SNAPSHOT'
 
-sourceCompatibility = 1.8
+sourceCompatibility = 12
 
 repositories {
     mavenCentral()
 }
 
-def PROTO_VERSION = "3.6.1"
+def PROTO_VERSION = "3.11.1"
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
@@ -22,11 +22,8 @@ dependencies {
 }
 
 sourceSets {
-    main {
-        java {
-            srcDir('build/generated/source/proto/main/java')
-        }
-    }
+    main.java.srcDir('build/generated/source/proto/main/java')
+    test.java.srcDir('build/generated/source/proto/test/java')
 }
 
 protobuf {

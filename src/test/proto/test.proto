@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package tutorial;
+
+import "google/protobuf/wrappers.proto";
+
+option java_package = "com.example.tutorial";
+
+message F {
+    map<string, F> map = 1;
+    google.protobuf.Int32Value age = 2;
+    google.protobuf.StringValue name = 3;
+}
+
+message TestRecord {
+    NestedRecord nested = 1;
+    google.protobuf.Int32Value age = 2;
+    google.protobuf.StringValue name = 3;
+}
+
+message NestedRecord {
+    NestedRecord nested = 1;
+    google.protobuf.Int32Value likes = 2;
+    google.protobuf.StringValue color = 3;
+}
